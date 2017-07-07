@@ -1,4 +1,4 @@
-package com.kinstalk.her.weatherapp
+package com.kinstalk.her.weatherapp.data.server
 
 /**
  * Created by mamingzhang on 2017/7/5.
