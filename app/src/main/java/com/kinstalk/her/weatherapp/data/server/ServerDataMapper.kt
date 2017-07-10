@@ -1,7 +1,5 @@
-package com.kinstalk.her.weatherapp.domain
+package com.kinstalk.her.weatherapp.data.server
 
-import com.kinstalk.her.weatherapp.data.server.Forecast
-import com.kinstalk.her.weatherapp.data.server.ForecastResult
 import com.kinstalk.her.weatherapp.domain.model.ForecastList
 import java.text.DateFormat
 import java.util.*
@@ -11,9 +9,9 @@ import com.kinstalk.her.weatherapp.domain.model.Forecast as ModelForecast
 /**
  * Created by mamingzhang on 2017/7/5.
  */
-class ForecastDataMapper {
+class ServerDataMapper {
 
-    fun convertFromDataModel(zipCode: Long, forecast: ForecastResult) = with(forecast) {
+    fun convertToDomain(zipCode: Long, forecast: ForecastResult) = with(forecast) {
         ForecastList(zipCode, city.name, city.country,
                 convertForecastListToDomain(list))
     }

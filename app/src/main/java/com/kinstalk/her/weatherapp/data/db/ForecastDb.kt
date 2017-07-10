@@ -1,5 +1,6 @@
 package com.kinstalk.her.weatherapp.data.db
 
+import com.kinstalk.her.weatherapp.domain.datasource.ForecastDataSource
 import com.kinstalk.her.weatherapp.domain.model.ForecastList
 import com.kinstalk.her.weatherapp.extensions.clear
 import com.kinstalk.her.weatherapp.extensions.parseList
@@ -12,8 +13,8 @@ import org.jetbrains.anko.db.select
  * Created by mamingzhang on 2017/7/7.
  */
 class ForecastDb(val forecastDbHelper: ForecastDbHelper = ForecastDbHelper.instance,
-                 val dataMapper: DbDataMapper = DbDataMapper()) {
-    fun requestForecastByZipCode(zipCode: Long, date: Long) = forecastDbHelper.use {
+                 val dataMapper: DbDataMapper = DbDataMapper()) : ForecastDataSource {
+    override fun requestForecastByZipCode(zipCode: Long, date: Long) = forecastDbHelper.use {
         val dailyRequest = "${DayForecastTable.CITY_ID} = ? AND ${DayForecastTable.DATE} >= ?"
         val dailyForecast = select(DayForecastTable.NAME)
                 .whereSimple(dailyRequest, zipCode.toString(), date.toString())
