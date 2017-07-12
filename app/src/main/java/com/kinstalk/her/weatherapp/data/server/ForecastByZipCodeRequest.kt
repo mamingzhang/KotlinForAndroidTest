@@ -17,4 +17,5 @@ class ForecastByZipCodeRequest(val zipCode: Long, val gson: Gson = Gson()) {
         val forecastJsonStr = java.net.URL(COMPLETE_URL + zipCode).readText()
         return gson.fromJson(forecastJsonStr, ForecastResult::class.java)
     }
+
 }
