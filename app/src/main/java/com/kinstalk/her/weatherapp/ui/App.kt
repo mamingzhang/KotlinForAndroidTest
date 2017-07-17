@@ -1,6 +1,7 @@
 package com.kinstalk.her.weatherapp.ui
 
 import android.app.Application
+import com.facebook.stetho.Stetho
 import com.kinstalk.her.weatherapp.extensions.DelegatesExt
 
 /**
@@ -15,6 +16,8 @@ class App : Application() {
         super.onCreate()
 
         instance = this
+
+        Stetho.initializeWithDefaults(this);
     }
 
 
